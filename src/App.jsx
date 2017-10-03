@@ -4,8 +4,8 @@ const issues = [
 	{
 		id:1,
 		status: 'Open',
-		owner: 'Ravan',
-		created: new Date('2017-08-15'),
+		owner: 'Rohan',
+		created: new Date('2017-09-15'),
 		effort: 5,
 		completionDate: undefined,
 		title: 'Error in console when clicking Add',
@@ -13,10 +13,10 @@ const issues = [
 	{
 		id:2,
 		status: 'Assigned',
-		owner: 'Eddie',
-		created: new Date('2017-08-16'),
+		owner: 'Shreya',
+		created: new Date('2017-09-16'),
 		effort: 14,
-		completionDate: new Date('2017-08-30'),
+		completionDate: new Date('2017-09-30'),
 		title: 'Missing bottom border on panel',
 	},
 ];
