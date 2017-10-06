@@ -1,22 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Pro MERN Stack</title>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/1.0.0/fetch.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.13.0/polyfill.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react-dom.js"></script>
+<!DOCTYPE HTML>
+<html>
 
-	<style type="text/css">
-		table.bordered-table th, td {border: 1px solid silver; padding: 4px;}
-		table.bordered-table {border-collapse: collapse;}
-	</style>
+<head>
+  <meta charset="UTF-8" />
+  <title>Pro MERN Stack</title>
+  <style>
+  	.header {border-bottom: 1px solid silver; margin-bottom: 20px;}
+  	.footer {
+  		border-top: 1px solid silver; padding-top: 5px; margin-top: 20px;
+  		font-family: Helvetica; font-size: 10px; color: grey;
+  	}
+    table.bordered-table th, td {border: 1px solid silver; padding: 4px;}
+    table.bordered-table {border-collapse: collapse};
+  </style>
 </head>
+
 <body>
-	<div id="contents">
-		<!-- This is where our component will appear -->
-	</div>
-	<script src="/App.js"></script>
+  <div id="contents"></div>    <!-- this is where our component will appear -->
+
+  <script src="/vendor.bundle.js"></script>
+  <script src="/app.bundle.js"></script>
+
 </body>
+
 </html>
