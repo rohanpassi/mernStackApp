@@ -18,8 +18,7 @@ const App = (props) => (
       {props.children}
     </div>
     <div className="footer">
-      Full source code available at this <a href="https://github.com/vasansr/pro-mern-stack">
-      GitHub repository</a>.
+      Copyrights 2017 @ Rohan Passi
     </div>
   </div>
 );
