@@ -2,23 +2,39 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Redirect, browserHistory, withRouter } from 'react-router';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Glyphicon } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 import IssueList from './IssueList.jsx';
 import IssueEdit from './IssueEdit.jsx';
+import IssueAddNavItem from './IssueAddNavItem.jsx'
 
 const contentNode = document.getElementById('contents');
 const NoMatch = () => <p>Page Not Found</p>;
 
+const Header = () => (
+  <Navbar fluid>
+    <Navbar.Header>
+      <Navbar.Brand>Issue Tracker</Navbar.Brand>
+    </Navbar.Header>
+    <Nav>
+      <LinkContainer to="/issues">
+        <NavItem>Issues</NavItem>
+      </LinkContainer>
+    </Nav>
+    <Nav pullRight>
+      <IssueAddNavItem />
+    </Nav>
+  </Navbar>
+);
+
 const App = (props) => (
   <div>
-    <div className="header">
-      <h1>Issue Tracker</h1>
-    </div>
-    <div className="contents">
+    <Header />
+    <div className="container-fluid">
       {props.children}
-    </div>
-    <div className="footer">
-      Copyrights 2017 @ Rohan Passi
+      <hr />
+      <h5><small>Copyrights 2017 @ Rohan Passi</small></h5>
     </div>
   </div>
 );
