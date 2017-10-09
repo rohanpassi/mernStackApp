@@ -1,16 +1,18 @@
-import SourceMapSupport from 'source-map-support';
+var SourceMapSupport = require('source-map-support');
 SourceMapSupport.install();
-import 'babel-polyfill';
+require('babel-polyfill');
 
-import path from 'path';
-import express from 'express';
-import bodyParser from 'body-parser';
-import { MongoClient, ObjectId } from 'mongodb';
-import Issue from './issue.js';
+var path = require('path');
+var express = require('express');
+var bodyParser = require('body-parser');
+var MongoClient = require('mongodb');
+var Issue = require('./issue.js');
 
 const app = express();
-app.use(express.static('static'));
+app.use(express.static('public'));
 app.use(bodyParser.json());
+
+var port = process.env.PORT || 3000;
 
 let db;
 
@@ -61,7 +63,7 @@ app.post('/api/issues', (req, res) => {
 app.get('/api/issues/:id', (req, res) => {
   let issueId;
   try {
-    issueId = new ObjectId(req.params.id);
+    issueId = new MongoClient.ObjectId(req.params.id);
   } catch (error) {
     res.status(422).json({ message: `Invalid issue ID format: ${error}` });
     return;
@@ -82,7 +84,7 @@ app.get('/api/issues/:id', (req, res) => {
 app.put('/api/issues/:id', (req, res) => {
   let issueId;
   try {
-    issueId = new ObjectId(req.params.id);
+    issueId = new MongoClient.ObjectId(req.params.id);
   } catch (error) {
     res.status(422).json({ message: `Invalid issue ID format: ${error}` });
     return;
@@ -113,7 +115,7 @@ app.put('/api/issues/:id', (req, res) => {
 app.delete('/api/issues/:id', (req, res) => {
   let issueId;
   try {
-    issueId = new ObjectId(req.params.id);
+    issueId = new MongoClient.ObjectId(req.params.id);
   } catch (error) {
     res.status(422).json({ message: `Invalid issue ID format: ${error}` });
     return;
@@ -130,13 +132,13 @@ app.delete('/api/issues/:id', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve('static/index.html'));
+  res.sendFile(path.resolve('public/index.html'));
 });
 
 MongoClient.connect('mongodb://localhost/issuetracker').then(connection => {
   db = connection;
-  app.listen(3000, () => {
-    console.log('App started on port 3000');
+  app.listen(port, () => {
+    console.log('App started on port: ' + port);
   });
 }).catch(error => {
   console.log('ERROR:', error);

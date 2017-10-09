@@ -1,3 +1,4 @@
+const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
@@ -9,8 +10,9 @@ module.exports = {
     ],
   },
   output: {
-    path: './static',
+    path: path.join(__dirname, 'public'),
     filename: 'app.bundle.js',
+    publicPath: '/public/'
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
@@ -28,7 +30,7 @@ module.exports = {
   },
   devServer: {
     port: 8000,
-    contentBase: 'static',
+    contentBase: 'public',
     proxy: {
       '/api/*': {
         target: 'http://localhost:3000',

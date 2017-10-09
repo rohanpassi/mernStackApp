@@ -45,7 +45,7 @@ function validateIssue(issue) {
   return (errors.length ? errors.join('; ') : null);
 }
 
-export default {
+module.exports = {
   validateIssue,
   cleanupIssue,
   convertIssue,
